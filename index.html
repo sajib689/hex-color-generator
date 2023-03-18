@@ -31,6 +31,9 @@
         #container input {
             margin-bottom: 20px;
             width: 70px;
+            height: 3vh;
+            border-radius: 2px;
+            outline: none;
         }
         #container .change {
             background: #fc6042;
@@ -78,22 +81,27 @@
         }
     </style>
     <script>
+        let div = null;
        window.onload= ()=>{
         main();
        }
         function main() {
-            const root = document.getElementById('container');
+            const container = document.getElementById('container');
             const btn = document.getElementById('btn');
             const output = document.getElementById('output');
             const copy = document.getElementById('copy-btn');
             btn.addEventListener('click', function(){ 
                 const bgColor = generateHEXcolor();
-                root.style.backgroundColor = bgColor;
+                container.style.backgroundColor = bgColor;
                 output.value = bgColor;
 
             })
             copy.addEventListener('click', function(){
                 window.navigator.clipboard.writeText(output.value);
+                if ( div !== null) {
+                    div.remove();
+                    div = null;
+                }
                 generateToast(`${output.value}  copied`);
             });
          }
@@ -104,7 +112,7 @@
             return `#${red.toString(16)}${green.toString(16)}${blue.toString(16)}`
         }
         function generateToast (msg) {
-            const div = document.createElement('div');
+            div = document.createElement('div');
             div.innerText = msg;
             div.className = 'tost-message toast-message-side-in';
             div.addEventListener ('click', function () {
@@ -112,6 +120,7 @@
                 div.classList.add('toast-message-side-out');
                 div.addEventListener('animationend', function () {
                 div.remove();
+                div = null;
             });
             })
             
