@@ -8,8 +8,11 @@
 </head>
 <body>
     <div id="container">
-        <input type="text" name="colorPicker" id="output" value="#000000">
-        <button type="submit" id="btn">Change</button>
+        <div class="input-group">
+            <input type="text" name="colorPicker" id="output" value="#000000">
+            <button class="copy-btn" id="copy-btn" title="copy to clipboard">Copy</button>
+        </div>
+        <button class="change" type="submit" id="btn">Change</button>
     </div>
     <style>
         body{
@@ -29,7 +32,7 @@
             margin-bottom: 20px;
             width: 70px;
         }
-        #container button {
+        #container .change {
             background: #fc6042;
             padding: 10px 20px;
             border: none;
@@ -45,12 +48,16 @@
             const root = document.getElementById('container');
             const btn = document.getElementById('btn');
             const output = document.getElementById('output');
+            const copy = document.getElementById('copy-btn');
             btn.addEventListener('click', function(){ 
                 const bgColor = generateHEXcolor();
                 root.style.backgroundColor = bgColor;
                 output.value = bgColor;
-                
+
             })
+            copy.addEventListener('click', function(){
+                window.navigator.clipboard.writeText(output.value);
+            });
          }
         function generateHEXcolor () {
             const red = Math.floor(Math.random() * 255);
