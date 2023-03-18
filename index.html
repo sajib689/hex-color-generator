@@ -9,7 +9,7 @@
 <body>
     <div id="container">
         <div class="input-group">
-            <input disabled type="text" name="colorPicker" id="output" value="#000000">
+            <input  type="text" name="colorPicker" id="output" value="#000000">
             <button class="copy-btn" id="copy-btn" title="copy to clipboard">Copy</button>
         </div>
         <button class="change" type="submit" id="btn">Change</button>
@@ -101,6 +101,7 @@
             btn.addEventListener('click', function(){ 
                 const bgColor = generateHEXcolor();
                 container.style.backgroundColor = bgColor;
+                
                 output.value = bgColor;
 
             })
