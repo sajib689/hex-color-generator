@@ -9,7 +9,7 @@
 <body>
     <div id="container">
         <div class="input-group">
-            <input type="text" name="colorPicker" id="output" value="#000000">
+            <input disabled type="text" name="colorPicker" id="output" value="#000000">
             <button class="copy-btn" id="copy-btn" title="copy to clipboard">Copy</button>
         </div>
         <button class="change" type="submit" id="btn">Change</button>
@@ -53,6 +53,12 @@
             padding: 1rem 2rem;
             cursor: pointer;
             z-index: 999;
+        }
+        .copy-btn{
+            background: #fc6042;
+            color: #fff;
+            border: 2px solid #fc6042;
+            border-radius: 2px;
         }
         .toast-message-side-in {
             animation: toast-animation-in 0.5s ease-in;
